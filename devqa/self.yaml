@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: self
   namespace: argocd
-  labels:
-    scope: system
 spec:
   destination:
     namespace: argocd

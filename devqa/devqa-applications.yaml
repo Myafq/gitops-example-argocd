@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: devqa-applications
   namespace: argocd
-  labels:
-    scope: system
 spec:
   destination:
     namespace: argocd
@@ -15,5 +13,7 @@ spec:
     path: argocd
     repoURL: https://github.com/Myafq/gitops-example-devqa-system.git
     targetRevision: HEAD
+    directory:
+      recurse: true
   syncPolicy:
     automated: {}

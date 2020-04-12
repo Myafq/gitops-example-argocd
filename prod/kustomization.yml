@@ -1,0 +1,21 @@
+# this is our "borrowed" manifests from Argo CD repository
+bases:
+  - ../manifests/cluster-install
+# this two will override existing kubernetes objects
+patchesStrategicMerge:
+# we want to expose ArgoCD service, so we define service type to be LoadBalancer
+- ./argocd-server-service.yaml
+# in this configmap we can manage RBAC inside of ArgoCD, who can see/do what
+- ./argocd-rbac-cm.yaml
+
+# These files are additional, we're creating in order for our installation to be more automated
+resources:
+# This ArgoCD Application enables us to use cascad deployment, we in some way delegate application-specific deployments 
+# to the different repository
+  - ./devqa-applications.yaml
+# This Application automates delivery of changes to ArgoCD instance itself
+  - ./self.yaml
+# Here we enforce security measures, so our development and qa teams couldn't create Cluster Roles for example. 
+  - ./app-project.yaml
+
+namespace: argocd

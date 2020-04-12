@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    p, role:admin, applications, create, */*, allow
+    p, role:admin, applications, update, */*, allow
+    p, role:admin, applications, delete, */*, allow
+    p, role:admin, applications, sync, */*, allow
+    p, role:admin, applications, override, */*, allow
+    p, role:admin, applications, action/*, */*, allow
+    p, role:admin, certificates, create, *, allow
+    p, role:admin, certificates, update, *, allow
+    p, role:admin, certificates, delete, *, allow
+    p, role:admin, clusters, create, *, allow
+    p, role:admin, clusters, update, *, allow
+    p, role:admin, clusters, delete, *, allow
+    p, role:admin, repositories, create, *, allow
+    p, role:admin, repositories, update, *, allow
+    p, role:admin, repositories, delete, *, allow
+    p, role:admin, projects, create, *, allow
+    p, role:admin, projects, update, *, allow
+    p, role:admin, projects, delete, *, allow
+    p, role:prod, applications, update, apps/*, allow
+    p, role:prod, applications, sync, apps/*, allow
+    p, role:prod, applications, override, apps/*, allow
+    p, role:prod, applications, action/*, apps/*, allow
+    p, role:prod, applications, get, apps/*, allow
+
+    g, prod, role:prod
+    g, kubernetes, role:admin
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  

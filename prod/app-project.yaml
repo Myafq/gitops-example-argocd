@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app
+  namespace: argocd
+spec:
+  description: App project with restrictions
+
+  sourceRepos:
+  - '*'
+
+  destinations:
+  - namespace: '*'
+    server: '*'
+
+  clusterResourceWhitelist: []
+  namespaceResourceBlacklist:
+  - group: "rbac.authorization.k8s.io/v1"
+    kind: 'Role*'

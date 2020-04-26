@@ -1,6 +1,7 @@
-# this is our "borrowed" manifests from Argo CD repository
+# this is our remote base from Argo CD repository
 bases:
-  - ../manifests/cluster-install
+- github.com/argoproj/argo-cd/manifests/cluster-install?ref=v1.5.0
+# important: don't forget to set "ref" with the desired version in order to hardcode manifests and ArgoCD version.
 # this two will override existing kubernetes objects
 patchesStrategicMerge:
 # we want to expose ArgoCD service, so we define service type to be LoadBalancer
